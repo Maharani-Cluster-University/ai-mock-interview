@@ -40,7 +40,7 @@ async function transcript(fileName: any) {
 
     return({success:true, transcript });
   } catch (error) {
-    console.error("server error", error);
+    console.error("server error");
     return({ error: error });
   }
 }
@@ -94,7 +94,7 @@ export default async function handler(req: any, res: any) {
         }
       });
     } catch (error) {
-      console.error('Error uploading file:', error);
+      console.error('Error uploading file:');
       return res.status(500).json({ error:error, msg: 'Internal server error' });
     }
   } else {
