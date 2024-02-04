@@ -25,13 +25,16 @@ async function transcript(fileName: any) {
       );
 
     const transcript = resp?.data?.text;
-
+    console.log("BEFORE CREATE");
+    
     // Content moderation check
     const response = await openai.createModeration({
       input: resp?.data?.text,
     });
+    console.log("After CREATE");
 
     if (response?.data?.results[0]?.flagged) {
+      console.log("INAPPROPRiATE");
       return({ error: "Inappropriate content detected. Please try again." });
     }
 
